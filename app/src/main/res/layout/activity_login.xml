@@ -14,7 +14,7 @@
         android:layout_marginTop="128dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Welcome to"
+        android:text="@string/welcome_to"
         android:textColor="@color/colorSecondary"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Rent-A-Car"
+        android:text="@string/rent_a_car"
         android:textColor="@color/colorSecondary"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -39,6 +39,64 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome_to_title" />
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/email"
+        android:textColor="@color/colorSecondary"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/rent_A_Car" />
+
+    <TextView
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/password"
+        android:textColor="@color/colorSecondary"
+        app:layout_constraintStart_toStartOf="@+id/emailText"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/forgot_password"
+        android:textColor="@android:color/white"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <TextView
+        android:id="@+id/a_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/you_are_not_a_member"
+        android:textColor="@android:color/white"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/login" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/register"
+        android:textColor="@color/colorSecondary"
+        app:fontFamily="@font/roboto_bold"
+        app:layout_constraintBottom_toBottomOf="@+id/a_member"
+        app:layout_constraintStart_toEndOf="@+id/a_member"
+        app:layout_constraintTop_toTopOf="@+id/a_member" />
 
     <EditText
         android:id="@+id/email"
@@ -56,27 +114,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="64dp"
-        android:text="Email"
-        android:textColor="@color/colorSecondary"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/rent_A_Car" />
 
-    <TextView
-        android:id="@+id/passwordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Password"
-        android:textColor="@color/colorSecondary"
-        app:layout_constraintStart_toStartOf="@+id/emailText"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+
 
     <EditText
         android:id="@+id/password"
@@ -106,80 +145,5 @@
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/forgot_password" />
 
-    <TextView
-        android:id="@+id/forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="forgot password?"
-        android:textColor="@android:color/white"
-        app:fontFamily="@font/roboto"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <TextView
-        android:id="@+id/a_member"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="You are not a member?"
-        android:textColor="@android:color/white"
-        app:fontFamily="@font/roboto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/login" />
-
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Register"
-        android:textColor="@color/colorSecondary"
-        app:fontFamily="@font/roboto_bold"
-        app:layout_constraintBottom_toBottomOf="@+id/a_member"
-        app:layout_constraintStart_toEndOf="@+id/a_member"
-        app:layout_constraintTop_toTopOf="@+id/a_member" />
-
-    <Button
-        android:id="@+id/customer"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/round_button"
-        android:text="Customer"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
-
-    <Button
-        android:id="@+id/vehicleCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/round_button"
-        android:text="Vehicle Category"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/customer" />
-
-    <Button
-        android:id="@+id/vehicle"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/round_button"
-        android:text="Vehicle"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleCategory" />
-
-    <Button
-        android:id="@+id/populate"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/round_button"
-        android:text="Populate"
-        app:layout_constraintStart_toStartOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

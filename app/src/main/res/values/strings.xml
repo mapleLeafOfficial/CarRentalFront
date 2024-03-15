@@ -9,4 +9,15 @@
     <string name="address">用户地址</string>
     <string name="phonenumber">电话</string>
     <string name="register">注册账户</string>
+    <string name="welcome_to">欢迎来到</string>
+    <string name="rent_a_car">租车服务</string>
+    <string name="email">用户名</string>
+    <string name="password">密码</string>
+    <string name="forgot_password">忘记密码？</string>
+    <string name="you_are_not_a_member">您还不是会员？</string>
+    <string name="customer">顾客</string>
+    <string name="vehicle_category">车辆分类</string>
+    <string name="vehicle">车辆</string>
+    <string name="populate">填充</string>
+
 </resources>

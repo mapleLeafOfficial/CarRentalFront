@@ -29,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import okhttp3.Call;
@@ -107,19 +109,13 @@ public class RegistrationActivity extends AppCompatActivity {
 
     // 注册用户的方法
     private void registerUser(final String firstName, String middleName, final String password) {
-            // 构建JSON格式的请求体
-            JSONObject requestBody = new JSONObject();
-            try {
-                requestBody.put("loginname", firstName);
-                requestBody.put("realname", middleName);
-                requestBody.put("pwd", password);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
+        Map<String, String> formData = new HashMap<>();
+        formData.put("loginname", firstName);
+        formData.put("realname", middleName);
+        formData.put("pwd", password);
             // 异步发送POST请求
             String url = BASE_URL+"/user/addUser";
-            OkHttpHelper.doPostAsync(url, requestBody.toString(), new Callback() {
+            OkHttpHelper.doPostAsync(url,formData , new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();
