@@ -21,16 +21,18 @@ public class Insurance implements Serializable{
 
     private double cost;
 
-    public Insurance(String coverageType, double cost) {
+    public Insurance(String coverageType) {
         this.coverageType = coverageType.toLowerCase();
-
-        if(this.coverageType.equals("basic")){
+        if(this.coverageType.equals("基础")){
             this.insuranceID = "CNDP2";
-        }else if(this.coverageType.equals("premium")){
+            cost = 15;
+        }else if(this.coverageType.equals("高级")){
             this.insuranceID = "C928M";
+            cost = 25;
+        }else {
+            this.insuranceID = "C928M";
+            cost = 0;
         }
-
-        this.cost = cost;
     }
 
     public String toString(){

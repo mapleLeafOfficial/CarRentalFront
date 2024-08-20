@@ -5,7 +5,7 @@ public class Constants {
     // 网络请求相关
 //    public static final String BASE_URL = "http://localhost:8080/carRental_war";
 //    public static final String BASE_URL = "http://10.0.2.2:8080/carRental_war";
-    public static final String BASE_URL = "http://192.168.174.25:8080/carRental_war";
+    public static final String BASE_URL = "http://192.168.128.25:8080/carRental_war";
     public static final int TIMEOUT_IN_SECONDS = 30;
 
     // SharedPreferences键值
@@ -24,4 +24,7 @@ public class Constants {
     public static final int MAX_RETRY_COUNT = 3;
     public static final int PAGE_SIZE = 20;
     public static final int DEFAULT_ANIMATION_DURATION = 300;
+    // 风格常量
+    public static final int[] COLOR_ARRAY = {-47032, -13936668, -4068, -3092272, -9539986};
+
 }

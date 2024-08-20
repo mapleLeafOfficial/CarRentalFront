@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Booking Complete"
+                    android:text="预订完成"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/back"
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="BookingID: 1234"
+                    android:text="预订ID：1234"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/bookingCompleteText"
@@ -97,7 +97,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Driver Details"
+                            android:text="司机详情"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Name:" />
+                                    android:text="姓名：" />
 
                                 <TextView
                                     android:id="@+id/name"
@@ -143,35 +143,11 @@
                                 android:paddingTop="10dp">
 
                                 <TextView
-                                    android:id="@+id/emailText"
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/roboto"
-                                    android:text="Email:" />
-
-                                <TextView
-                                    android:id="@+id/email"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:paddingLeft="15dp"
-                                    android:text="jenilvekaria@yahoo.ca"
-                                    android:textColor="@color/colorPrimary" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingTop="10dp">
-
-                                <TextView
                                     android:id="@+id/phoneNumberText"
                                     android:layout_width="50dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Phone:" />
+                                    android:text="电话：" />
 
                                 <TextView
                                     android:id="@+id/phoneNumber"
@@ -229,7 +205,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Summary"
+                            android:text="总结"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -257,7 +233,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_bold"
-                                    android:text="2020 Toyota Avalon"
+                                    android:text="2020年丰田雅阁"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="18sp" />
                             </LinearLayout>
@@ -273,7 +249,7 @@
                                     android:layout_width="70dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Rate:" />
+                                    android:text="费率：" />
 
                                 <TextView
                                     android:id="@+id/rate"
@@ -281,7 +257,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
-                                    android:text="$50/Day"
+                                    android:text="$50/天"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
 
@@ -296,7 +272,7 @@
                                     android:layout_width="70dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Total Days:" />
+                                    android:text="总天数：" />
 
                                 <TextView
                                     android:id="@+id/totalDays"
@@ -304,7 +280,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
-                                    android:text="9 Days"
+                                    android:text="9天"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
 
@@ -320,7 +296,7 @@
                                     android:layout_width="70dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Pick Up:" />
+                                    android:text="取车：" />
 
                                 <TextView
                                     android:id="@+id/pickup"
@@ -328,7 +304,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
-                                    android:text="11:00PM\t\tWeb, Dec 05"
+                                    android:text="下午11:00\t\t星期三, 12月05日"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
 
@@ -343,7 +319,7 @@
                                     android:layout_width="70dp"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Drop Off:" />
+                                    android:text="还车：" />
 
                                 <TextView
                                     android:id="@+id/dropoff"
@@ -351,7 +327,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="15dp"
-                                    android:text="03:00PM\t\tWeb, Dec 17"
+                                    android:text="下午03:00\t\t星期六, 12月17日"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
                         </LinearLayout>
@@ -391,7 +367,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/roboto_bold"
-                                    android:text="Insurance"
+                                    android:text="保险"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
 
@@ -414,7 +390,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="5dp"
-                                    android:text="None"
+                                    android:text="无"
                                     android:textColor="@color/colorPrimary" />
 
                             </LinearLayout>
@@ -430,7 +406,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="15dp"
-                                    android:text="$0/Day"
+                                    android:text="每日$0"
                                     android:textSize="12sp" />
                             </LinearLayout>
 
@@ -478,7 +454,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:fontFamily="@font/roboto"
-                                        android:text="Total:" />
+                                        android:text="总计:" />
 
                                     <TextView
                                         android:id="@+id/totalCost"
@@ -490,13 +466,9 @@
                                         android:textColor="@color/colorSecondary"
                                         android:textSize="24sp" />
                                 </LinearLayout>
-
                             </LinearLayout>
-
                         </LinearLayout>
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </androidx.cardview.widget.CardView>
 
                 <Button
@@ -507,22 +479,15 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/round_button"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Return Car"
+                    android:text="归还车辆"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/personalInfoText"
                     app:layout_constraintStart_toStartOf="@+id/personalInfoText"
                     app:layout_constraintTop_toBottomOf="@+id/personalInfoText" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </LinearLayout>
     </ScrollView>
-
-
-
-
-
+    1
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,7 @@ public class OkHttpHelper {
 
         Request request = new Request.Builder()
                 .url(url)
+                .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
                 .post(body)
                 .build();
         client.newCall(request).enqueue(callback);
@@ -61,16 +62,6 @@ public class OkHttpHelper {
             return response.body().string();
         }
     }
-    // 异步发送POST请求
-//    public static void doPostAsync(String url, String json, Callback callback) {
-//        logURL( url,  json);
-//        RequestBody body = RequestBody.create(JSON, json);
-//        Request request = new Request.Builder()
-//                .url(url)
-//                .post(body)
-//                .build();
-//        client.newCall(request).enqueue(callback);
-//    }
     //get请求
     public static void get(String url, final OkHttpCallback callback) {
         Request request = new Request.Builder()

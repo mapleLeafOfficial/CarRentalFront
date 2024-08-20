@@ -1,30 +1,25 @@
 package com.example.carrentalapp.ActivityPages;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.example.carrentalapp.Database.BookingDao;
-import com.example.carrentalapp.Database.CustomerDao;
-import com.example.carrentalapp.Database.Project_Database;
-import com.example.carrentalapp.Model.Booking;
-import com.example.carrentalapp.Model.Customer;
 import com.example.carrentalapp.Model.Insurance;
+import com.example.carrentalapp.Model.Rent;
+import com.example.carrentalapp.Model.Vehicle;
 import com.example.carrentalapp.R;
+import com.example.carrentalapp.Session.Session;
+import com.example.carrentalapp.utils.Tools;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -47,11 +42,12 @@ public class BookingCarActivity extends AppCompatActivity {
     private Calendar _return;
 
     //DRIVER DETAILS
-    private EditText firstName, lastName, email, phoneNumber;
+    private EditText firstName, phoneNumber;
     private RadioGroup customerTitle;
 
-    private BookingDao bookingDao;
-    private CustomerDao customerDao;
+    private Vehicle vehicle;
+    private String insuranceid;
+
 
     //BY DEFAULT TITLE SELECTION
     String mrMs = "mr";
@@ -68,7 +64,9 @@ public class BookingCarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_car);
-
+        Intent intent = getIntent();
+        vehicle = (Vehicle) intent.getSerializableExtra("VEHICLE");
+        insuranceid = intent.getStringExtra("INSURANCE");
         initComponents();
         listenHandler();
     }
@@ -78,46 +76,28 @@ public class BookingCarActivity extends AppCompatActivity {
         back = findViewById(R.id.back);
         //CONTINUE BOOKING
         continueBooking = findViewById(R.id.continueBooking);
-
         //CAR RENTAL DATE AND TIME
         pickupDate = findViewById(R.id.pickupDate);
         pickupTime = findViewById(R.id.pickupTime);
-
         returnDate = findViewById(R.id.returnDate);
         returnTime = findViewById(R.id.returnTime);
-
         //DRIVER DETAILS
         customerTitle = findViewById(R.id.mrMsTitle);
         firstName = findViewById(R.id.firstName);
-        lastName = findViewById(R.id.lastName);
-        email = findViewById(R.id.email);
         phoneNumber = findViewById(R.id.phoneNumber);
-
         //PICKUP AND RETURN DATE OBJECT
         _pickup = Calendar.getInstance();
         _return = Calendar.getInstance();
-
-
         //SET THE DATE AND TIME TO CURRENT
         pickupDate.setText(dateFormat.format(_pickup.getTime()));
         pickupTime.setText(timeFormat.format(_pickup.getTime()));
-
         returnDate.setText(dateFormat.format(_return.getTime()));
         returnTime.setText(timeFormat.format(_return.getTime()));
-
-        //Get the Customer Room (table)
-        customerDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").allowMainThreadQueries()
-                .build()
-                .customerDao();
-        //Get the Customer Room (table)
-        bookingDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").allowMainThreadQueries()
-                .build()
-                .bookingDao();
+        firstName.setText(Session.read(getBaseContext(), "isLoggedIn", "admin"));
     }
 
     //LISTEN HANDLER
     private void listenHandler() {
-
         //GOING BACK BUTTON
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,15 +106,6 @@ public class BookingCarActivity extends AppCompatActivity {
             }
         });
 
-        //CONTINUE BOOKING
-        continueBooking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent bookingSummaryPage = new Intent(BookingCarActivity.this, BookingSummaryActivity.class);
-                startActivity(bookingSummaryPage);
-            }
-        });
 
         //PICKUP DATE AND TIME LISTENER
         pickupDate.setOnClickListener(new View.OnClickListener() {
@@ -166,74 +137,41 @@ public class BookingCarActivity extends AppCompatActivity {
         continueBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate();
+                //收集所有数据：
+                String carnumber = vehicle.getCarnumber();
+                String opername = Session.read(getBaseContext(), "isLoggedIn", "admin");
+                Date _returnT = _return.getTime();
+                Date _pickupT = _pickup.getTime();
+                Date date = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                // 使用 SimpleDateFormat 对象将 Date 对象格式化为字符串
+                String returndate = sdf.format(_returnT);
+                String begindate = sdf.format(_pickupT);
+                String identity = Tools.generateOrderNumber(18);
+                Double price = vehicle.getRentprice();
+                //价格
+                String rentid = Tools.generateRentID();
+                if (insuranceid.equals("基础")){
+                    price += 15;
+                } else if (insuranceid.equals("高级")) {
+                    price += 25;
+                }
+                Date currentDate = new Date();
+                Rent rent = new Rent(rentid,price,_pickupT,_returnT,1,identity,carnumber,opername,currentDate);
+                Intent bookingSummaryPage = new Intent(BookingCarActivity.this, BookingSummaryActivity.class);
+                bookingSummaryPage.putExtra("RENT",rent);
+                bookingSummaryPage.putExtra("INSURANCE",new Insurance(insuranceid));
+                bookingSummaryPage.putExtra("VEHICLE",vehicle);
+                startActivity(bookingSummaryPage);
             }
         });
-
     }
 
-    private void validate() {
 
-        //GET CUSTOMER TITLE
-        customerTitle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton title = findViewById(checkedId);
-                mrMs = title.getText().toString().toLowerCase();
-            }
-        });
 
-        //GET ALL THE DRIVER DETAIL FIELD
-        String _firstName = firstName.getText().toString().toLowerCase();
-        String _lastName = lastName.getText().toString().toLowerCase();
-        String _email= email.getText().toString().toLowerCase();
-        String _phoneNumber = phoneNumber.getText().toString();
-
-        //ENSURE THAT ALL FIELDS ARE NOT EMPTY
-        if(!fieldCheck(_firstName,_lastName,_email,_phoneNumber)) {
-            toast("Incomplete Form");
-            return;
-        }
-
-        //GET THE CUSTOMER OBJECT FROM THE INFORMATION PROVIDED
-        Customer customer = customerDao.findUser(_firstName,_lastName,_email);
-
-        //IF CUSTOMER NOT FOUND DO NOTHING
-        if(customer == null){
-            toast("Customer Do Not Exist");
-            return;
-        }
-
-        customerDao.setTitle(mrMs,customer.getCustomerID());
-
-        //GENERATE UNIQUE BOOKING ID
-        int bookingID = generateID(400,499);
-        while(bookingDao.exist(bookingID)){
-            bookingID = generateID(400,499);
-        }
-
-        //ALL THE REQUIRED ID TO GENERATE A BOOKING
-        int vehicleID = Integer.valueOf(getIntent().getStringExtra("VEHICLEID"));
-        String insuranceID = getIntent().getStringExtra("INSURANCEID");
-        int customerID = customer.getCustomerID();
-
-        //CREATE A BOOKING OBJECT FROM THE INSURANCE PROVIDED
-        Booking newBooking = new Booking(bookingID,_pickup,_return,null,customerID,1010,-1,vehicleID,insuranceID);
-
-        //REDIRECT THEM TO BOOKING SUMMARY PAGE WITH PASSING THE BOOKING OBJECT
-        Intent bookingSummary = new Intent(BookingCarActivity.this,BookingSummaryActivity.class);
-        bookingSummary.putExtra("BOOKING",newBooking);
-        startActivity(bookingSummary);
-
-    }
-
-    //MAKING SURE ALL FIELDS ARE COMPLETE
-    private boolean fieldCheck(String _firstName, String _lastName, String _email, String _phoneNumber) {
-        return  !_firstName.equals("") && !_lastName.equals("") &&
-                !_email.equals("") && !_phoneNumber.equals("");
-    }
 
     //OPEN CALENDAR DIALOG
+
     private void openCalendar(final Calendar rentalDate, final TextView rentalDateText) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this);
 
@@ -241,21 +179,19 @@ public class BookingCarActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 rentalDate.set(year,month,dayOfMonth);
+                rentalDate.set(Calendar.HOUR_OF_DAY, 0);
+                rentalDate.set(Calendar.MINUTE, 0);
+                rentalDate.set(Calendar.SECOND, 0);
                 rentalDateText.setText(dateFormat.format(rentalDate.getTime()));
             }
         });
-
         datePickerDialog.show();
     }
-
     //OPEN TIMEPICKER DIALOG
     private Date openTimePicker(final Calendar rentalTime, final TextView rentalTimeText){
         final Calendar calendar = Calendar.getInstance();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int min = calendar.get(Calendar.MINUTE);
-
-
-
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -270,19 +206,4 @@ public class BookingCarActivity extends AppCompatActivity {
 
         return calendar.getTime();
     }
-
-    //DEBUGING
-    private void toast(String txt){
-        Toast toast = Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    ///GENERATE NUMBER BETWEEN 400 - 499
-    private int generateID(int start, int end){
-        Random rnd = new Random();
-        int bound = end%100;
-        int id = rnd.nextInt(bound)+start;
-        return id;
-    }
-
 }

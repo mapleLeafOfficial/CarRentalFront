@@ -8,38 +8,29 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
-import com.example.carrentalapp.Database.CustomerDao;
-import com.example.carrentalapp.Database.Project_Database;
-import com.example.carrentalapp.Database.VehicleDao;
-import com.example.carrentalapp.Model.Booking;
-import com.example.carrentalapp.Model.Customer;
-import com.example.carrentalapp.Model.Vehicle;
+import com.example.carrentalapp.Model.Rent;
 import com.example.carrentalapp.R;
+import com.example.carrentalapp.utils.Tools;
 
 import java.util.ArrayList;
 
 public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingHolder>{
 
     private Context context;
-    private ArrayList<Booking> bookings;
+    private ArrayList<Rent> rents;
     private onBookingListener onBookingListener;
 
-    private VehicleDao vehicleDao;
-    private CustomerDao customerDao;
 
-    public BookingAdapter(Context context, ArrayList<Booking> bookings, BookingAdapter.onBookingListener onBookingListener) {
+
+
+    public BookingAdapter(Context context, ArrayList<Rent> list, BookingAdapter.onBookingListener onBookingListener) {
         this.context = context;
-        this.bookings = bookings;
+        this.rents = list;
         this.onBookingListener = onBookingListener;
 
-        vehicleDao = Room.databaseBuilder(context, Project_Database.class, "car_rental_db").allowMainThreadQueries()
-                    .build()
-                    .vehicleDao();
-        customerDao = Room.databaseBuilder(context, Project_Database.class, "car_rental_db").allowMainThreadQueries()
-                    .build()
-                    .customerDao();
+
+
     }
 
     @NonNull
@@ -52,20 +43,17 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingH
 
     @Override
     public void onBindViewHolder(@NonNull BookingHolder bookingHolder, int position) {
-        Booking _booking = bookings.get(position);
-        Vehicle _vehicle = vehicleDao.findVehicle(_booking.getVehicleID());
-        Customer _customer = customerDao.findUser(_booking.getCustomerID());
-
-        bookingHolder.vehicleName.setText(_vehicle.fullTitle());
-        bookingHolder.bookingID.setText(_booking.getBookingID()+"");
-        bookingHolder.customerName.setText(_customer.getFullName());
-        bookingHolder.pickupDate.setText(_booking.getPickupTime());
-        bookingHolder.returnDate.setText(_booking.getReturnTime());
-        bookingHolder.bookingStatus.setText(_booking.getBookingStatus());
+        Rent rent = rents.get(position);
+        bookingHolder.vehicleName.setText(rent.getCarnumber());
+        bookingHolder.bookingID.setText(rent.getIdentity());
+        bookingHolder.customerName.setText(rent.getOpername());
+        bookingHolder.pickupDate.setText(Tools.formatDateTime(rent.getBegindate()));
+        bookingHolder.returnDate.setText(Tools.formatDateTime(rent.getReturndate()));
+        bookingHolder.bookingStatus.setText("订单正在生效");
     }
 
     @Override
-    public int getItemCount() { return bookings.size(); }
+    public int getItemCount() { return rents.size(); }
 
     class BookingHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -75,14 +63,12 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingH
 
         public BookingHolder(@NonNull View itemView, onBookingListener onBookingListener) {
             super(itemView);
-
             vehicleName = itemView.findViewById(R.id.vehicleName);
             bookingID = itemView.findViewById(R.id.bookingID);
             customerName = itemView.findViewById(R.id.customerName);
             pickupDate = itemView.findViewById(R.id.pickupDate);
             returnDate = itemView.findViewById(R.id.returnDate);
             bookingStatus = itemView.findViewById(R.id.bookingStatus);
-
             this.onBookingListener = onBookingListener;
             itemView.setOnClickListener(this);
 

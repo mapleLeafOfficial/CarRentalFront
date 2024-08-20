@@ -2,7 +2,6 @@ package com.example.carrentalapp.ActivityPages;
 
 import static com.example.carrentalapp.utils.Constants.BASE_URL;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,20 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.room.Room;
-
-import com.example.carrentalapp.Database.CustomerDao;
-import com.example.carrentalapp.Database.Project_Database;
-import com.example.carrentalapp.Model.*;
 import com.example.carrentalapp.R;
 import com.example.carrentalapp.utils.OkHttpHelper;
 import com.example.carrentalapp.utils.ToastUtil;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +22,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.Callback;

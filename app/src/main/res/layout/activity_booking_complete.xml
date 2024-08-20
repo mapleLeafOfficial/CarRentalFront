@@ -75,6 +75,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/bookingGo"
                         android:background="@drawable/vehicle_info_card"
                         android:backgroundTint="#24F577"
                         android:paddingBottom="10dp">
@@ -117,6 +118,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/booking_complete">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/vehicle_info_card"
@@ -251,6 +253,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/vehicle_info_card"
+                        android:visibility="gone"
                         android:paddingBottom="10dp">
 
                         <View

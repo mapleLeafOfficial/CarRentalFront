@@ -1,24 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentPages.BookingFragment">
+    android:background="@color/colorPrimary"
+    android:paddingBottom="10dp"
+    tools:context=".FragmentPages.BookingFragment"
+    tools:layout_editor_absoluteY="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFAB00">
+        android:id="@+id/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:background="@drawable/vehicle_info_card"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/userAvatar"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/userAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/userAvatar">
 
         <Button
-            android:id="@+id/logout"
+            android:id="@+id/edit_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"
+            android:background="@drawable/rounded_button"
+            android:text="EDIT"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/logout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintStart_toEndOf="@+id/logout2"
+            app:layout_constraintTop_toTopOf="@+id/logout2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/logout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/rounded_button"
+            android:text="LOOUT"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mileage"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0dp"
+            android:layout_height="0.3dp"
+            android:layout_marginTop="4dp"
+            android:background="#707070"
+            android:scrollbarThumbHorizontal="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleSpecsText" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0dp"
+            android:layout_height="0.3dp"
+            android:background="#707070"
+            android:scrollbarThumbHorizontal="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yearText" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="0.3dp"
+            android:background="#707070"
+            android:scrollbarThumbHorizontal="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/year" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0.3dp"
+            android:background="#707070"
+            android:scrollbarThumbHorizontal="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mileageText" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0.3dp"
+            android:background="#707070"
+            android:scrollbarThumbHorizontal="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mileage" />
+
+        <TextView
+            android:id="@+id/vehicleSpecsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="用户信息"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/yearText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="用户名："
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleSpecsText" />
+
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:enabled="false"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/address"
+            android:textColor="@android:color/black"
+            android:textCursorDrawable="@null"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/passwordusernameEditText"
+            app:layout_constraintTop_toTopOf="@+id/mileageText" />
+
+        <TextView
+            android:id="@+id/mileageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto"
+            android:text="地址："
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/year"
+            app:layout_constraintTop_toBottomOf="@+id/year" />
+
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:editable="false"
+            android:enabled="false"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="none"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="username"
+            android:textColor="@android:color/black"
+            android:textCursorDrawable="@null"
+            android:textSize="26dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.608"
+            app:layout_constraintStart_toEndOf="@+id/yearText"
+            app:layout_constraintTop_toTopOf="@+id/yearText" />
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto"
+            android:text="密码："
+            android:textColor="@color/colorPrimary"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/yearText"
+            app:layout_constraintTop_toBottomOf="@+id/yearText" />
+
+        <EditText
+            android:id="@+id/phoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:enabled="false"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="手机号"
+            android:textColor="@android:color/black"
+            android:textCursorDrawable="@null"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/addressEditText"
+            app:layout_constraintTop_toTopOf="@+id/mileage" />
+
+        <TextView
+            android:id="@+id/mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto"
+            android:text="手机号："
+            android:textColor="@color/colorPrimary"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/mileageText"
+            app:layout_constraintTop_toBottomOf="@+id/mileageText" />
+
+        <EditText
+            android:id="@+id/passwordusernameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:enabled="false"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/password"
+            android:textColor="@android:color/black"
+            android:textCursorDrawable="@null"
+            android:textSize="26dp"
+            app:layout_constraintStart_toStartOf="@+id/usernameEditText"
+            app:layout_constraintTop_toTopOf="@+id/year" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+
+    <com.example.carrentalapp.view.CircularImageView
+        android:id="@+id/userAvatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/circle_background"
+        android:src="@drawable/avator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="236dp"
+        android:layout_height="252dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
+        android:progressBackgroundTint="@android:color/transparent"
+        android:progressTint="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userAvatar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

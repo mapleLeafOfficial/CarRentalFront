@@ -5,7 +5,6 @@ import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.carrentalapp.Database.Project_Database;
-import com.example.carrentalapp.Database.VehicleCategoryDao;
-import com.example.carrentalapp.Database.VehicleDao;
 import com.example.carrentalapp.Model.VehicleCategory;
 import com.example.carrentalapp.R;
 import com.squareup.picasso.Picasso;
@@ -37,8 +33,8 @@ public class AddVehicleCategoryActivity extends AppCompatActivity {
     private ImageView viewImage;
     private int colorCode = -1;
 
-    private VehicleCategoryDao vehicleCategoryDao;
-    private VehicleDao vehicleDao;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,14 +57,8 @@ public class AddVehicleCategoryActivity extends AppCompatActivity {
 
         viewImage = findViewById(R.id.viewImage);
 
-        vehicleCategoryDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").
-                             allowMainThreadQueries().
-                             build().
-                             vehicleCategoryDao();
-        vehicleDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").
-                     allowMainThreadQueries().
-                     build().
-                     vehicleDao();
+
+
     }
 
     public void listenHandler(){
@@ -85,7 +75,7 @@ public class AddVehicleCategoryActivity extends AppCompatActivity {
                 VehicleCategory vehicleCategory = createVehicleCategory();
 
                 if(vehicleCategory != null){
-                    vehicleCategoryDao.insert(vehicleCategory);
+
                     Log.d("MainActivity",vehicleCategory.getObject());
                     toast("Vehicle Category Added");
                 }
@@ -95,8 +85,8 @@ public class AddVehicleCategoryActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vehicleCategoryDao.deleteAll();
-                vehicleDao.deleteAll();
+
+
                 toast("RESET");
             }
         });
@@ -132,22 +122,10 @@ public class AddVehicleCategoryActivity extends AppCompatActivity {
         String category_ID = categoryID.getText().toString();
         String image_URL = imageURL.getText().toString();
 
-        if(!category_ID.equals("") && !vehicleCategoryDao.exists(Integer.valueOf(category_ID)) && !vehicleCategoryDao.exits(categoryName)) {
+
             return new VehicleCategory(categoryName,Integer.valueOf(category_ID),colorCode,image_URL);
         }
 
-        if(category_ID.equals(""))
-            toast("CategoryID is blank");
-        else if(categoryName.equals(""))
-            toast("Category name is blank");
-        else if(vehicleCategoryDao.exists(Integer.valueOf(category_ID)))
-            toast("CategoryID already exists");
-        else if(image_URL.equals(""))
-            toast("Please enter image URL");
-        else
-            toast("Category already exists");
-        return null;
-    }
 
     public void openColorDialog(){
         AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(this, colorCode, new AmbilWarnaDialog.OnAmbilWarnaListener() {

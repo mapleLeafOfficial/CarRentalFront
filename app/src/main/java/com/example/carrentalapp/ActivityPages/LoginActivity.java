@@ -7,25 +7,12 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import androidx.room.Room;
-
-import com.example.carrentalapp.Database.CustomerDao;
-import com.example.carrentalapp.Database.InsuranceDao;
-import com.example.carrentalapp.Database.Project_Database;
-import com.example.carrentalapp.Database.VehicleCategoryDao;
-import com.example.carrentalapp.Database.VehicleDao;
-import com.example.carrentalapp.Model.Customer;
-import com.example.carrentalapp.Model.Insurance;
-import com.example.carrentalapp.Model.Vehicle;
-import com.example.carrentalapp.Model.VehicleCategory;
 import com.example.carrentalapp.R;
 import com.example.carrentalapp.Session.Session;
 import com.example.carrentalapp.utils.OkHttpHelper;
@@ -57,8 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Intent intent = getIntent();
         //IF USER ALREADY LOGGED IN => REDIRECT TO HOME PAGE
-        Boolean isLoggedIn = Boolean.valueOf(Session.read(LoginActivity.this, "isLoggedIn", "false"));
-        if (isLoggedIn) {
+        String read = Session.read(LoginActivity.this, "isLoggedIn", "false");
+        if (!read.equals("false")) {
             Intent homePage = new Intent(LoginActivity.this, UserViewActivity.class);
             startActivity(homePage);
         }
@@ -107,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 获取用户名和密码
-                String username = email.getText().toString().trim();
+                final String username = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
                 // 发送网络API请求进行登录验证，这里假设使用异步方式
                 // 这里应该调用您的网络请求方法，验证用户名和密码
@@ -139,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                                     ToastUtil.showToastShort(getBaseContext(), msg);
                                     // 注册成功，跳转到LoginActivity并传递用户名和密码
                                     // 保存用户名和密码到会话中
-                                    Session.save(getApplicationContext(), "isLoggedIn", "true");
+                                    Session.save(getApplicationContext(), "isLoggedIn", username);
                                     // 跳转到主页面
                                     Intent intent = new Intent(LoginActivity.this, UserViewActivity.class);
                                     startActivity(intent);

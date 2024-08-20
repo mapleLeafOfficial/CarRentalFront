@@ -13,9 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.carrentalapp.Database.Project_Database;
-import com.example.carrentalapp.Database.VehicleCategoryDao;
-import com.example.carrentalapp.Database.VehicleDao;
 import com.example.carrentalapp.Model.Vehicle;
 import com.example.carrentalapp.R;
 import com.squareup.picasso.Picasso;
@@ -42,8 +39,6 @@ public class AddVehicleActivity extends AppCompatActivity {
 
     private ImageView vehicleImage;
 
-    private VehicleDao vehicleDao;
-    private VehicleCategoryDao vehicleCategoryDao;
 
 
     @Override
@@ -73,36 +68,21 @@ public class AddVehicleActivity extends AppCompatActivity {
         load = findViewById(R.id.load);
         vehicleImage = findViewById(R.id.viewVehicle);
 
-        vehicleCategoryDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").
-                allowMainThreadQueries().
-                build().
-                vehicleCategoryDao();
-        vehicleDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db").
-                allowMainThreadQueries().
-                build().
-                vehicleDao();
     }
 
     private void listenHandler(){
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Vehicle vehicle = createVehicle();
+//                Vehicle vehicle = createVehicle();
 
-                if(vehicle != null){
-                    vehicleDao.insert(vehicle);
-                    vehicleCategoryDao.updateQuantity(category.getText().toString());
-                    Log.d("MainActivity",vehicle.getObject());
-                    toast("Vehicle Added");
-                }
+
             }
         });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vehicleCategoryDao.deleteAll();
-                vehicleDao.deleteAll();
                 toast("RESET");
             }
         });
@@ -149,31 +129,14 @@ public class AddVehicleActivity extends AppCompatActivity {
 
         int vehicleID = generateID(200,300);
 
-        while(vehicleDao.exists(vehicleID)){
-            vehicleID = generateID(200,300);
-        }
 
-        if(valid){
-            Vehicle vehicle = new Vehicle(
-                                    vehicleID,
-                                    Double.valueOf(_price),
-                                    Integer.valueOf(_seats),
-                                    Integer.valueOf(_mileage),
-                                    _manufacturer,
-                                    _model,
-                                    Integer.valueOf(_year),
-                                    _category,
-                                    _availability,
-                                    _imageURL
-                                );
-            return vehicle;
-        }
+
 
         return null;
     }
 
     private boolean isValid(String category, String seats, String price, String mileage, String manufacturer, String model, String year, String imageURL) {
-        if(!vehicleCategoryDao.exits(category)){
+        if(true){
             toast(category + " Category does not exits");
             return false;
         }

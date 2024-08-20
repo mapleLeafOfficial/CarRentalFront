@@ -81,12 +81,9 @@ public class UserViewActivity extends AppCompatActivity {
     private void initComponents(){
         bottomNavigationView = findViewById(R.id.bottom_nav);
         frameLayout = findViewById(R.id.framelayout);
-
         vehicleCategoryFragment = new VehicleCategoryFragment();
         bookingFragment= new BookingFragment();
         accountFragment = new AccountFragment();
-
         loggedInCustomerID = getIntent().getStringExtra("CUSTOMERID");
-
     }
 }

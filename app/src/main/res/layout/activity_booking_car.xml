@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Information"
+                    android:text="信息"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/back"
@@ -85,7 +85,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Car Rental Time"
+                            android:text="租车时间"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +108,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="PICKUP DATE"
+                                android:text="取车日期"
                                 android:textColor="#00E676" />
 
                             <TextView
@@ -117,7 +117,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="PICKUP TIME"
+                                android:text="取车时间"
                                 android:textColor="#00E676" />
                         </LinearLayout>
 
@@ -152,7 +152,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="5dp"
                                     android:paddingRight="10dp"
-                                    android:text="Web, Dec 05"
+                                    android:text="周三, 十二月 05"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
 
@@ -209,7 +209,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="RETURN DATE"
+                                android:text="归还日期"
                                 android:textColor="#00E676" />
 
                             <TextView
@@ -218,7 +218,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="RETURN TIME"
+                                android:text="归还时间"
                                 android:textColor="#00E676" />
                         </LinearLayout>
 
@@ -255,7 +255,7 @@
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="5dp"
                                     android:paddingRight="10dp"
-                                    android:text="Web, Dec 17"
+                                    android:text="Web, 十二月 17"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
 
@@ -279,7 +279,7 @@
                                     android:layout_weight="1"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="5dp"
-                                    android:text="03:00PM"
+                                    android:text="下午03:00"
                                     android:textColor="@color/colorPrimary" />
                             </LinearLayout>
                         </LinearLayout>
@@ -325,7 +325,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Driver Details"
+                            android:text="驾驶员详情"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -348,7 +348,7 @@
                                 android:checked="true"
                                 android:fontFamily="@font/roboto"
                                 android:paddingRight="10dp"
-                                android:text="Mr" />
+                                android:text="先生" />
 
                             <RadioButton
                                 android:id="@+id/ms"
@@ -358,7 +358,7 @@
                                 android:buttonTint="@color/colorSecondary"
                                 android:fontFamily="@font/roboto"
                                 android:paddingRight="10dp"
-                                android:text="Ms" />
+                                android:text="女士" />
                         </RadioGroup>
 
                         <LinearLayout
@@ -385,39 +385,17 @@
                                     android:layout_marginTop="8dp"
                                     android:fontFamily="@font/roboto"
                                     android:paddingLeft="4dp"
-                                    android:text="First Name" />
+                                    android:text="性名" />
 
                                 <EditText
                                     android:id="@+id/firstName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:ems="10"
-                                    android:inputType="textPersonName"
-                                    android:textColor="@color/colorPrimary"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:id="@+id/lastNameLayout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/lastNameText"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
-                                    android:fontFamily="@font/roboto"
-                                    android:paddingLeft="4dp"
-                                    android:text="Last Name" />
-
-                                <EditText
-                                    android:id="@+id/lastName"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ems="10"
+                                    android:clickable="false"
+                                    android:editable="false"
+                                    android:ems="20"
+                                    android:enabled="false"
+                                    android:focusable="false"
                                     android:inputType="textPersonName"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="14sp" />
@@ -426,7 +404,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/emailLayout"
+                            android:id="@+id/phoneNumberLayout"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -435,45 +413,18 @@
                             app:layout_constraintTop_toBottomOf="@+id/firstNameLastNameLayout">
 
                             <TextView
-                                android:id="@+id/emailText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto"
-                                android:paddingLeft="4dp"
-                                android:text="Email" />
-
-                            <EditText
-                                android:id="@+id/email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ems="10"
-                                android:inputType="textEmailAddress"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/phoneNumberLayout"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="@+id/emailLayout"
-                            app:layout_constraintStart_toStartOf="@+id/emailLayout"
-                            app:layout_constraintTop_toBottomOf="@+id/emailLayout">
-
-                            <TextView
                                 android:id="@+id/phoneNumberText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto"
                                 android:paddingLeft="4dp"
-                                android:text="Phone Number" />
+                                android:text="备注" />
 
                             <EditText
                                 android:id="@+id/phoneNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:ems="10"
+                                android:ems="20"
                                 android:inputType="phone"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="14sp" />
@@ -492,7 +443,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/round_button"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Continue Booking"
+                    android:text="继续预订"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -504,9 +455,4 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

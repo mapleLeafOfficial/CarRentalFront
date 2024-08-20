@@ -7,13 +7,12 @@
     android:background="@color/colorPrimary"
     tools:context=".ActivityPages.VehicleInfoActivity"
     >
-
     <TextView
         android:id="@+id/vehicleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
-        android:text="Year Manufacturer Model"
+        android:text="年份 制造商 型号"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/back"
@@ -67,7 +66,7 @@
                     android:backgroundTint="#3803A9F4"
                     android:fontFamily="@font/roboto_medium"
                     android:padding="15dp"
-                    android:text="$50/Day"
+                    android:text="50元/天"
                     android:textColor="@color/colorSecondary"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="@+id/vehicleSpecCard"
@@ -97,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Not Available"
+                        android:text="不可用"
                         android:textColor="#E90202"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -131,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Available"
+                        android:text="可用"
                         android:textColor="#3CFF00"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -175,7 +174,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Vehicle Specs"
+                            android:text="车辆规格"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -187,7 +186,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Year"
+                            android:text="年份"
                             app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
                             app:layout_constraintTop_toBottomOf="@+id/vehicleSpecsText" />
 
@@ -196,7 +195,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Type"
+                            android:text="类型"
                             app:layout_constraintBottom_toBottomOf="@+id/seatsText"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
                             app:layout_constraintTop_toTopOf="@+id/seatsText" />
@@ -206,7 +205,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Seats"
+                            android:text="座位数"
                             app:layout_constraintBottom_toBottomOf="@+id/mileageText"
                             app:layout_constraintStart_toStartOf="@+id/manufacturerText"
                             app:layout_constraintTop_toTopOf="@+id/mileageText" />
@@ -217,7 +216,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="32dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Mileage"
+                            android:text="里程数"
                             app:layout_constraintStart_toStartOf="@+id/vehicleSpecsText"
                             app:layout_constraintTop_toBottomOf="@+id/yearText" />
 
@@ -227,7 +226,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="24dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Model"
+                            android:text="型号"
                             app:layout_constraintBottom_toBottomOf="@+id/manufacturerText"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/manufacturerText" />
@@ -237,7 +236,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Manufacturer"
+                            android:text="制造商"
                             app:layout_constraintBottom_toBottomOf="@+id/yearText"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -249,7 +248,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Year"
+                            android:text="年份"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/yearText"
                             app:layout_constraintTop_toBottomOf="@+id/yearText" />
@@ -260,7 +259,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Type"
+                            android:text="类型"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/typeText"
                             app:layout_constraintTop_toBottomOf="@+id/typeText" />
@@ -271,7 +270,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Seats"
+                            android:text="座位数"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/seatsText"
                             app:layout_constraintTop_toBottomOf="@+id/seatsText" />
@@ -282,7 +281,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Mileage"
+                            android:text="里程数"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/mileageText"
                             app:layout_constraintTop_toBottomOf="@+id/mileageText" />
@@ -293,7 +292,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Model"
+                            android:text="型号"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/modelText"
                             app:layout_constraintTop_toBottomOf="@+id/modelText" />
@@ -304,10 +303,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/roboto"
-                            android:text="Manufacturer"
+                            android:text="制造商"
                             android:textColor="@color/colorPrimary"
                             app:layout_constraintStart_toStartOf="@+id/manufacturerText"
                             app:layout_constraintTop_toBottomOf="@+id/manufacturerText" />
+
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -346,7 +346,7 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Insurance"
+                            android:text="保险"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -368,7 +368,7 @@
                                 android:layout_height="20dp"
                                 android:buttonTint="@color/colorSecondary"
                                 android:checked="true"
-                                android:text="None" />
+                                android:text="无" />
 
                             <LinearLayout
                                 android:id="@+id/insurance_none"
@@ -413,7 +413,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:paddingRight="5dp"
-                                            android:text="Collision Damage Waiver"
+                                            android:text="碰撞损坏豁免"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
 
@@ -430,7 +430,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Supplemental Liability Protection"
+                                            android:text="补充责任保护"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
                                     </LinearLayout>
@@ -456,7 +456,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Personal Accident Insurance"
+                                            android:text="个人意外保险"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
 
@@ -473,7 +473,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Personal Effects Coverage"
+                                            android:text="个人财产保障"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
                                     </LinearLayout>
@@ -486,7 +486,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
                                 android:buttonTint="@color/colorSecondary"
-                                android:text="Basic" />
+                                android:text="基础" />
 
                             <LinearLayout
                                 android:id="@+id/insurance_basic"
@@ -531,7 +531,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:paddingRight="5dp"
-                                            android:text="Collision Damage Waiver"
+                                            android:text="碰撞损坏豁免"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
 
@@ -548,7 +548,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Supplemental Liability Protection"
+                                            android:text="补充责任保护"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
                                     </LinearLayout>
@@ -574,7 +574,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Personal Accident Insurance"
+                                            android:text="个人意外保险"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
 
@@ -591,7 +591,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Personal Effects Coverage"
+                                            android:text="个人财产保障"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
                                     </LinearLayout>
@@ -604,7 +604,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"
                                 android:buttonTint="@color/colorSecondary"
-                                android:text="Premium" />
+                                android:text="高级" />
 
 
                             <LinearLayout
@@ -650,7 +650,7 @@
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
                                             android:paddingRight="5dp"
-                                            android:text="Collision Damage Waiver"
+                                            android:text="碰撞损坏豁免"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
 
@@ -667,7 +667,7 @@
                                             android:layout_weight="1"
                                             android:fontFamily="@font/roboto"
                                             android:paddingLeft="5dp"
-                                            android:text="Supplemental Liability Protection"
+                                            android:text="补充责任保护"
                                             android:textColor="@color/colorPrimary"
                                             android:textSize="12sp" />
                                     </LinearLayout>
@@ -682,23 +682,6 @@
 
                                         <ImageView
                                             android:id="@+id/imageView12"
-                                            android:layout_width="16dp"
-                                            android:layout_height="16dp"
-                                            app:srcCompat="@drawable/path" />
-
-                                        <TextView
-                                            android:id="@+id/pai_premium"
-                                            android:layout_width="150dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:fontFamily="@font/roboto"
-                                            android:paddingLeft="5dp"
-                                            android:text="Personal Accident Insurance"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textSize="12sp" />
-
-                                        <ImageView
-                                            android:id="@+id/imageView13"
                                             android:layout_width="16dp"
                                             android:layout_height="16dp"
                                             app:srcCompat="@drawable/path" />
@@ -731,7 +714,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/round_button"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Book This Car"
+                    android:text="租用这辆车"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"

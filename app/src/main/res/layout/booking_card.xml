@@ -29,7 +29,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:paddingLeft="16dp"
                 android:paddingTop="8dp"
-                android:text="2020 Toyota Avalon"
+                android:text="2020年丰田亚瓦隆"
                 android:textColor="@color/statusBarColor"
                 android:textSize="20sp" />
 
@@ -46,7 +46,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="BookingID:"
+                    android:text="预订ID："
                     android:textStyle="bold" />
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Name:" />
+                    android:text="姓名：" />
 
                 <TextView
                     android:id="@+id/customerName"
@@ -82,7 +82,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
-                    android:text="Mr. Jenil Vekaria"
+                    android:text="吉尼尔·韦卡里亚先生"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
 
@@ -100,7 +100,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Pickup:" />
+                    android:text="取车时间：" />
 
                 <TextView
                     android:id="@+id/pickupDate"
@@ -109,7 +109,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
-                    android:text="07:33 p.m January, 1 2020"
+                    android:text="下午07:33，2020年1月1日"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Return:" />
+                    android:text="还车时间：" />
 
                 <TextView
                     android:id="@+id/returnDate"
@@ -135,7 +135,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto"
                     android:paddingLeft="15dp"
-                    android:text="07:33 p.m January, 10 2020"
+                    android:text="下午07:33，2020年1月10日"
                     android:textColor="@color/colorPrimary" />
             </LinearLayout>
 
@@ -153,7 +153,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center_horizontal"
-                    android:text="Waiting for approval"
+                    android:text="等待批准"
                     android:textColor="#FF6D00" />
             </LinearLayout>
 

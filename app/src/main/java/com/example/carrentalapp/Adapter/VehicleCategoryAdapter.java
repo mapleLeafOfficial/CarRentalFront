@@ -1,9 +1,10 @@
 package com.example.carrentalapp.Adapter;
 
+import static com.example.carrentalapp.utils.Tools.pickRandomNumber;
+
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.ViewUtils;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,8 +17,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.carrentalapp.Model.CarType;
 import com.example.carrentalapp.Model.VehicleCategory;
 import com.example.carrentalapp.R;
+import com.example.carrentalapp.Session.Session;
+import com.example.carrentalapp.utils.Constants;
+import com.example.carrentalapp.utils.Tools;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -25,10 +30,10 @@ import java.util.ArrayList;
 public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategoryAdapter.VehicleCategoryHolder> {
 
     private Context context;
-    private ArrayList<VehicleCategory> vehicleCategories;
+    private ArrayList<CarType> vehicleCategories;
     private onCategoryListener onCategoryListener;
 
-    public VehicleCategoryAdapter(Context context, ArrayList<VehicleCategory> vehicleCategories, onCategoryListener onCategoryListener){
+    public VehicleCategoryAdapter(Context context, ArrayList<CarType> vehicleCategories, onCategoryListener onCategoryListener){
         this.context = context;
         this.vehicleCategories = vehicleCategories;
         this.onCategoryListener = onCategoryListener;
@@ -44,15 +49,21 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
 
     @Override
     public void onBindViewHolder(@NonNull VehicleCategoryHolder vehicleCategoryHolder, int i) {
-        VehicleCategory vehicleCategory = vehicleCategories.get(i);
-        vehicleCategoryHolder.vehicleCategory.setText(vehicleCategory.getCategory());
-        vehicleCategoryHolder.quantity.setText("Total: " + vehicleCategory.getQuantity());
-        vehicleCategoryHolder.card.setBackgroundTintList(ColorStateList.valueOf(vehicleCategory.getColorCard()));
-        String url = vehicleCategory.getCategoryImageURL();
-
-//        Log.d("MainActivity",url);
-
-        Picasso.get().load(url).into(vehicleCategoryHolder.categoryImage);
+        CarType carType = vehicleCategories.get(i);
+        vehicleCategoryHolder.vehicleCategory.setText(carType.getCartype());
+        vehicleCategoryHolder.quantity.setText("Total: " + carType.getCarCount());
+        int length = Constants.COLOR_ARRAY.length;
+        int i1 = (i+1) % length;
+        vehicleCategoryHolder.card.setBackgroundTintList(ColorStateList.valueOf(Constants.COLOR_ARRAY[i1-1]));
+        String  imagePath = "";
+        if (carType.getCartype().equals("SUV")){
+            imagePath =  "android.resource://" + context.getPackageName() + "/" + R.drawable.suv;
+        }else if (carType.getCartype().equals("渣土车")) {
+            imagePath =  "android.resource://" + context.getPackageName() + "/" + R.drawable.van;
+        }else if (carType.getCartype().equals("轿车")) {
+            imagePath =  "android.resource://" + context.getPackageName() + "/" + R.drawable.coupe;
+        }
+        Picasso.get().load(imagePath).into(vehicleCategoryHolder.categoryImage);
     }
 
     @Override
@@ -74,10 +85,8 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
             card = itemView.findViewById(R.id.card);
             select = itemView.findViewById(R.id.select);
             categoryImage = itemView.findViewById(R.id.categoryImage);
-
             this.onCategoryListener = onCategoryListener;
             itemView.setOnClickListener(this);
-
             select.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -85,7 +94,6 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
                 }
             });
         }
-
         @Override
         public void onClick(View v) {
             onCategoryListener.onCategoryClick(getAdapterPosition());
@@ -96,5 +104,4 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
         void onCategoryClick(int position);
         void onSelectClick(int position);
     }
-
 }

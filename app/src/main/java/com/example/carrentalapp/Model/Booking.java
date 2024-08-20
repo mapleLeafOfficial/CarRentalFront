@@ -40,11 +40,11 @@ public class Booking implements Serializable {
     private int billingID;
 
 
-    @ForeignKey(entity = Vehicle.class,
-            parentColumns = "parentClassColumn",
-            childColumns = "childClassColumn",
-            onDelete = ForeignKey.CASCADE)
-    private int vehicleID;
+//    @ForeignKey(entity = Vehicle.class,
+//            parentColumns = "parentClassColumn",
+//            childColumns = "childClassColumn",
+//            onDelete = ForeignKey.CASCADE)
+//    private int vehicleID;
 
     @ForeignKey(entity = Insurance.class,
             parentColumns = "parentClassColumn",
@@ -60,7 +60,6 @@ public class Booking implements Serializable {
         this.customerID = customerID;
         this.administratorID = administratorID;
         this.billingID = billingID;
-        this.vehicleID = vehicleID;
         this.insuranceID = insuranceID;
     }
 
@@ -76,13 +75,7 @@ public class Booking implements Serializable {
                 "BillingID:         " + billingID + "\n";
     }
 
-    public int getVehicleID() {
-        return vehicleID;
-    }
 
-    public void setVehicleID(int vehicleID) {
-        this.vehicleID = vehicleID;
-    }
 
     public int getBookingID() {
         return bookingID;

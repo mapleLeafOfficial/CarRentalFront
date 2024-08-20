@@ -17,6 +17,7 @@ import com.example.carrentalapp.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleHolder> {
 
@@ -41,9 +42,11 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleH
     @Override
     public void onBindViewHolder(@NonNull VehicleHolder vehicleHolder, int i) {
         Vehicle v = vehicle.get(i);
-        vehicleHolder.vehicle.setText(v.getYear() + " " + v.getManufacturer() + " " + v.getModel());
-        vehicleHolder.price.setText("$"+v.getPrice()+"/day");
-        Picasso.get().load(v.getVehicleImageURL()).into(vehicleHolder.imageView);
+        Date createtime = v.getCreatetime();
+        vehicleHolder.vehicle.setText( createtime.getYear()+ " " + v.getDescription() + " " + v.getCartype());
+        vehicleHolder.price.setText("$"+v.getRentprice()+"/day");
+        String imagePath =  "android.resource://" + context.getPackageName() + "/" + R.drawable.suv;
+        Picasso.get().load(imagePath).into(vehicleHolder.imageView);
     }
 
     @Override

@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,12 +15,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carrentalapp.Database.InsuranceDao;
-import com.example.carrentalapp.Database.Project_Database;
 import com.example.carrentalapp.Model.Insurance;
 import com.example.carrentalapp.Model.Vehicle;
 import com.example.carrentalapp.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.Date;
 
 public class VehicleInfoActivity extends AppCompatActivity {
 
@@ -51,19 +50,15 @@ public class VehicleInfoActivity extends AppCompatActivity {
     private String chosenInsurance = "";
 
     //INSURANCE DATABASE TABLE
-    InsuranceDao insuranceDao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_info);
-
         initComponents();
         listenHandler();
         displayVehicleInfo();
-
-
-
     }
 
     private void initComponents() {
@@ -73,10 +68,8 @@ public class VehicleInfoActivity extends AppCompatActivity {
         back = findViewById(R.id.back);
         vehicleTitle = findViewById(R.id.vehicleTitle);
         vehicleImage = findViewById(R.id.vehicleImage);
-
         available = findViewById(R.id.available);
         notAvailable = findViewById(R.id.notAvailable);
-
         //VEHICLE INFO FIELD
         year = findViewById(R.id.year);
         manufacturer = findViewById(R.id.manufacturer);
@@ -84,21 +77,13 @@ public class VehicleInfoActivity extends AppCompatActivity {
         mileage = findViewById(R.id.mileage);
         seats = findViewById(R.id.seats);
         type = findViewById(R.id.type);
-
         //VEHICLE PRICE
         vehiclePrice = findViewById(R.id.vehiclePrice);
-
         //INSURANCE OPTION
         insuranceOption = findViewById(R.id.insuranceOption);
-
         //BOOK BUTTON
         book = findViewById(R.id.book_this_car);
-
         //INSURANCE DATABASE TABLE
-        insuranceDao = Room.databaseBuilder(getApplicationContext(), Project_Database.class, "car_rental_db")
-                .allowMainThreadQueries()
-                .build()
-                .insuranceDao();
     }
 
     private void listenHandler() {
@@ -116,8 +101,9 @@ public class VehicleInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent informationPage = new Intent(VehicleInfoActivity.this, BookingCarActivity.class);
-                informationPage.putExtra("INSURANCEID",getInsuranceID(chosenInsurance));
-                informationPage.putExtra("VEHICLEID",vehicle.getVehicleID()+"");
+                informationPage.putExtra("INSURANCE",chosenInsurance);
+                informationPage.putExtra("VEHICLE",vehicle);
+//                informationPage.putExtra("VEHICLEID",vehicle.getVehicleID()+"");
                 startActivity(informationPage);
             }
         });
@@ -134,20 +120,15 @@ public class VehicleInfoActivity extends AppCompatActivity {
 
     }
 
-    private String getInsuranceID(String chosenInsurance){
-        Insurance insurance = new Insurance(chosenInsurance,-1);
-        return insurance.getInsuranceID();
-    }
 
     private void displayVehicleInfo() {
-        //SETTING THE TITLE TO VEHICLE NAME
-        vehicleTitle.setText(vehicle.fullTitle());
-        //LOADING THE VEHICLE IMAGE
-        Picasso.get().load(vehicle.getVehicleImageURL()).into(vehicleImage);
-
-        //IF VEHICLE AVAILABLE => DISPLAY AVAILABLE TEXT
-        //IF VEHICLE NOT AVAILABLE => DISPLAY NOT AVAILABLE TEXT
-        if(vehicle.isAvailability()){
+        vehicleTitle.setText(vehicle.getDescription());
+//        LOADING THE VEHICLE IMAGE
+        String imagePath =  "android.resource://" + getBaseContext().getPackageName() + "/" + R.drawable.suv;
+        Picasso.get().load(imagePath).into(vehicleImage);
+//        IF VEHICLE AVAILABLE => DISPLAY AVAILABLE TEXT
+//        IF VEHICLE NOT AVAILABLE => DISPLAY NOT AVAILABLE TEXT
+        if(vehicle.getIsrenting()==0){
             available.setVisibility(ConstraintLayout.VISIBLE);
             notAvailable.setVisibility(ConstraintLayout.INVISIBLE);
             book.setEnabled(true);
@@ -162,21 +143,11 @@ public class VehicleInfoActivity extends AppCompatActivity {
         }
 
         //SET VEHICLE SPECS
-        year.setText(vehicle.getYear()+"");
-        manufacturer.setText(vehicle.getManufacturer());
-        model.setText(vehicle.getModel());
-        mileage.setText(vehicle.getMileage()+"");
-        seats.setText(vehicle.getSeats()+"");
-        type.setText(vehicle.getCategory());
-
-        vehiclePrice.setText("$" + vehicle.getPrice()+"/Day");
-
+        Date createtime = vehicle.getCreatetime();
+        year.setText(createtime.getYear()+"");
+        model.setText(vehicle.getDescription());
+        mileage.setText(vehicle.getDeposit()+"");
+        type.setText(vehicle.getCartype());
+        vehiclePrice.setText("$" + vehicle.getRentprice()+"/Day");
     }
-
-    //DEBUGING
-    private void toast(String txt){
-        Toast toast = Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
 }

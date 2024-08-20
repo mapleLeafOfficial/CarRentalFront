@@ -1,146 +1,122 @@
 package com.example.carrentalapp.Model;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import java.io.Serializable;
+import java.util.Date;
 
-@Entity
 public class Vehicle implements Serializable {
+    private String carnumber;
 
-    @PrimaryKey
-    private int vehicleID;
+    private String cartype;
 
-    private double price;
-    private int seats;
-    private int mileage;
-    private String manufacturer;
-    private String model;
-    private int year;
-    private String category;
-    private boolean availability;
-    private String vehicleImageURL;
+    private String color;
 
-    public Vehicle(int vehicleID, double price, int seats, int mileage, String manufacturer, String model, int year, String category, boolean availability, String vehicleImageURL) {
-        this.vehicleID = vehicleID;
-        this.price = price;
-        this.seats = seats;
-        this.mileage = mileage;
-        this.manufacturer = manufacturer.toLowerCase();
-        this.model = model.toLowerCase();
-        this.year = year;
-        this.category = category.toLowerCase();
-        this.availability = availability;
-        this.vehicleImageURL = vehicleImageURL;
+    private Double price;
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "carnumber='" + carnumber + '\'' +
+                ", cartype='" + cartype + '\'' +
+                ", color='" + color + '\'' +
+                ", price=" + price +
+                ", rentprice=" + rentprice +
+                ", deposit=" + deposit +
+                ", isrenting=" + isrenting +
+                ", description='" + description + '\'' +
+                ", carimg='" + carimg + '\'' +
+                ", createtime=" + createtime +
+                '}';
     }
 
-    public String toString(){
-        return  "\n"+
-                "VehicleID:     " + vehicleID + "\n" +
-                "Price:         " + price + "\n" +
-                "Seats:         " + seats + "\n" +
-                "Mileage:       " + mileage + "\n" +
-                "Manufacturer:  " + capitalize(manufacturer) + "\n" +
-                "Model:         " + capitalize(model) + "\n" +
-                "Year:          " + year + "\n" +
-                "Category:      " + capitalize(category) + "\n" +
-                "Availability:  " + availability + "\n";
+    private Double rentprice;
 
+    private Double deposit;
+
+    private Integer isrenting;
+
+    private String description;
+
+    private String carimg;
+
+    private Date createtime;
+
+    public String getCarnumber() {
+        return carnumber;
     }
 
-    public String getObject(){
-        String str = "Vehicle v1 = new Vehicle("+vehicleID+","+price+","+seats+","+mileage+",\""+manufacturer+"\",\""+model+"\","+year+",\""+category+"\","+availability+",\""+vehicleImageURL+"\");";
-        return str;
+    public void setCarnumber(String carnumber) {
+        this.carnumber = carnumber == null ? null : carnumber.trim();
     }
 
-    public String capitalize(String str){
-        String firstLetter = str.charAt(0) + "";
-        return firstLetter.toUpperCase() + str.substring(1);
+    public String getCartype() {
+        return cartype;
     }
 
-    public String getVehicleImageURL() {
-        return vehicleImageURL;
+    public void setCartype(String cartype) {
+        this.cartype = cartype == null ? null : cartype.trim();
     }
 
-    public void setVehicleImageURL(String vehicleImageURL) {
-        this.vehicleImageURL = vehicleImageURL;
+    public String getColor() {
+        return color;
     }
 
-
-    public int getVehicleID() {
-        return vehicleID;
+    public void setColor(String color) {
+        this.color = color == null ? null : color.trim();
     }
 
-    public void setVehicleID(int vehicleID) {
-        this.vehicleID = vehicleID;
-    }
-
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public int getSeats() {
-        return seats;
+    public Double getRentprice() {
+        return rentprice;
     }
 
-    public void setSeats(int seats) {
-        this.seats = seats;
+    public void setRentprice(Double rentprice) {
+        this.rentprice = rentprice;
     }
 
-    public int getMileage() {
-        return mileage;
+    public Double getDeposit() {
+        return deposit;
     }
 
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
+    public void setDeposit(Double deposit) {
+        this.deposit = deposit;
     }
 
-    public String getManufacturer() {
-        return capitalize(manufacturer);
+    public Integer getIsrenting() {
+        return isrenting;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setIsrenting(Integer isrenting) {
+        this.isrenting = isrenting;
     }
 
-    public String getModel() {
-        return capitalize(model);
+    public String getDescription() {
+        return description;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
-    public int getYear() {
-        return year;
+    public String getCarimg() {
+        return carimg;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setCarimg(String carimg) {
+        this.carimg = carimg == null ? null : carimg.trim();
     }
 
-    public String getCategory() {
-        return capitalize(category);
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
-
-    public boolean isAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
-    }
-
-    public String fullTitle(){
-        return getYear() + " " + getManufacturer() + " " + getModel();
-    }
-
 }
